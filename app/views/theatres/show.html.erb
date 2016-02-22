@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @theatre.theatreName %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @theatre.location %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @theatre.capacity %>
+</p>
+  <strong>Showings:</strong>
+
+<% @theatre.showings.each do |showing| %> <br>
+	<%= showing.movie.name %>
+	<%= showing.dateAndTime %><br>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_theatre_path(@theatre) %> |
+<%= link_to 'Back', theatres_path %>

@@ -1,0 +1,31 @@
+<%= form_for(@showing) do |f| %>
+  <% if @showing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@showing.errors.count, "error") %> prohibited this showing from being saved:</h2>
+
+      <ul>
+      <% @showing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :theatre_id %><br>
+    <%= f.collection_select:theatre_id, Theatre.all,:id ,:theatreName%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :movie_id %><br>
+    <%= f.collection_select:movie_id, Movie.all,:id ,:name%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Happening %><br>
+    <%= f.datetime_local_field :dateAndTime%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

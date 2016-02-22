@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieApp</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div id="columns">
+	<ul>
+		<%if !signed_in?%>
+			<li><%=link_to "Sign In",login_path %></li>
+		<%else%>
+			<li> Signed In as: <%=@current_user.firstName%></li>
+			<li><%=link_to "Sign Out",logout_path %></li>
+		<%end%>
+	</ul>
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="http://localhost:3000">Home</a>
+			  <a class="navbar-brand" href="http://localhost:3000/showings">Showings</a>
+			  <a class="navbar-brand" href="http://localhost:3000/movies">Movies</a>
+			  <a class="navbar-brand" href="http://localhost:3000/theatres">Theatres</a>
+			</div>
+			</ul>
+		  </div>
+		</nav>
+	<p>Oisin Coburn Github: https://github.com/oisco/movieApp</p>
+</div>
+
+
+<%= yield %>
+
+</body>
+</html>

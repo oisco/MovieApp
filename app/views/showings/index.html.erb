@@ -1,0 +1,29 @@
+<h1>Listing showings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Theatre</th>
+      <th>Movie</th>
+      <th>Happening</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @showings.each do |showing| %>
+      <tr>
+        <td><%= showing.theatre.theatreName %></td>
+        <td><%= showing.movie.name %></td>
+        <td><%= showing.dateAndTime %></td>
+        <td><%= link_to 'Show', showing %></td>
+        <td><%= link_to 'Edit', edit_showing_path(showing) %></td>
+        <td><%= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Showing', new_showing_path %>

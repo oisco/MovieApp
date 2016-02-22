@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theatre_id: 1
+  movie_id: 1
+  dateAndTime: 2016-02-08 08:29:28
+
+two:
+  theatre_id: 1
+  movie_id: 1
+  dateAndTime: 2016-02-08 08:29:28
