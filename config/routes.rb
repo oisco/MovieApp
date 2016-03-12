@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :orders
+
+  resources :carts
+
+  resources :lineitems
+
+  get 'shop/index'
+
   resources :comments
 
   resources :tests
@@ -13,8 +21,14 @@ Rails.application.routes.draw do
 		resources :comments
 	end
 
-  resources :theatres
-
+	resources :carts do
+		resources:lineitems
+	end
+	
+	resources :theatres
+	
+	get '/search'  =>'showings#search'
+	
 	controller :sessions do
 				get 'login'=>:new
 				post 'login'=>:create

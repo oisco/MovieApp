@@ -4,7 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   include ApplicationHelper
-  
+ 
+private
+	def current_cart
+		@cart=Cart.find(session[:cart_id])
+		rescue ActiveRecord::RecordNotFound
+			@cart=Cart.new
+			session[:cart_id]=@cart.id
+	end
+	
+
   def authorise 
 	   unless signed_in?
 	       store_location
@@ -12,8 +21,9 @@ class ApplicationController < ActionController::Base
 		   end
 		 end		 
   end
-
-  private 
+ 
+ private
         def store_location  
 		    session[:return_to] = request.fullpath
 		end
+		

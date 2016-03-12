@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<table class='table'>
+<%=@cart.lineitems.each do |item|%>
+	<td><%=item.showing.movie.name%>
+<%end%>
+<%=button_to "Continue Shopping",root_path,:method=>:get %>
+<%=button_to "Empty cart",@cart,method: :delete,confirm:'Are you sure?' %>
+<%=button_to "Checkout",new_order_path,:method=>:get %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

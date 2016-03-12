@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
   user=User.find_by_firstName(params[:firstName])
 	if user && user.authenticate(params[:password])
 		session[:user_id]=user.id
-		
-		redirect_to user
+		redirect_to root_url
 	else
 		flash[:notice]="wrong email/password"
 		render 'new'
@@ -22,4 +21,5 @@ class SessionsController < ApplicationController
 	end
 	redirect_to login_path
   end
+  
 end

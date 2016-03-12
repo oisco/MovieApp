@@ -11,6 +11,16 @@ class ShowingsController < ApplicationController
   # GET /showings/1.json
   def show
   end
+  
+  def search
+		@showings =Showing.search params[:query]
+		unless @showings.empty?
+				render 'index'
+		else
+						render 'index'
+
+		end
+	end
 
   # GET /showings/new
   def new

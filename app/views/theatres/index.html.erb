@@ -6,7 +6,7 @@
       <th>Name</th>
       <th>Location</th>
       <th>Capacity</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -14,7 +14,7 @@
     <% @theatres.each do |theatre| %>
 		  <tr>
 			<td><%= theatre.theatreName %></td>
-			<td><%= theatre.location %></td>
+			<td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{theatre.latitude}%2C#{theatre.longitude}" %><td>
 			<td><%= theatre.capacity %></td>
 			<td><%= link_to 'Show', theatre %></td>
 			<td><%= link_to 'Edit', edit_theatre_path(theatre) %></td>

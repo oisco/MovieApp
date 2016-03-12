@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222075328) do
+ActiveRecord::Schema.define(version: 20160311155824) do
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -22,12 +27,29 @@ ActiveRecord::Schema.define(version: 20160222075328) do
     t.datetime "updated_at"
   end
 
+  create_table "lineitems", force: true do |t|
+    t.integer  "showing_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "movies", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "picture"
     t.string   "trailer"
     t.integer  "length"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.string   "paymethod"
+    t.decimal  "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +74,8 @@ ActiveRecord::Schema.define(version: 20160222075328) do
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "tickets", force: true do |t|

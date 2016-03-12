@@ -12,6 +12,7 @@
 	<ul>
 		<%if !signed_in?%>
 			<li><%=link_to "Sign In",login_path %></li>
+			<li><%=link_to "Register",new_user_path %></li>
 		<%else%>
 			<li> Signed In as: <%=@current_user.firstName%></li>
 			<li><%=link_to "Sign Out",logout_path %></li>
@@ -30,7 +31,9 @@
 		</nav>
 	<p>Oisin Coburn Github: https://github.com/oisco/movieApp</p>
 </div>
-
+<% flash.each do |key, value| %>
+  <%= content_tag(:p, value, :class => "flash #{key}") %>
+<% end %>
 
 <%= yield %>
 
